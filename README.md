@@ -1,2 +1,0 @@
-# PencilBox
-Geometry + Swift
