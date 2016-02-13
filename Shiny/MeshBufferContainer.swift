@@ -13,8 +13,8 @@ import Metal
 public struct MeshBufferContainer<Mesh: MeshType> {
     let mesh: Mesh
     
-    private(set) var vertexBuffer: MTLBuffer
-    private(set) var indexBuffer: MTLBuffer
+    public private(set) var vertexBuffer: MTLBuffer
+    public private(set) var indexBuffer: MTLBuffer
 }
 
 // + Initializers
@@ -33,7 +33,7 @@ public extension MeshBufferContainer {
 }
 
 // + Computed properties
-extension MeshBufferContainer {
+public extension MeshBufferContainer {
     
     /// The number of vertices in the vertex buffer.
     var vertexCount: Int {
