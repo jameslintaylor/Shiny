@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		24A3AF451C6ED7B000F21382 /* Shiny.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A3AF441C6ED7B000F21382 /* Shiny.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24A3AF4D1C6ED7EE00F21382 /* VertexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3AF4C1C6ED7EE00F21382 /* VertexType.swift */; };
+		24A3AF4F1C6ED7F400F21382 /* MeshType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3AF4E1C6ED7F400F21382 /* MeshType.swift */; };
+		24A3AF511C6ED7FD00F21382 /* IndexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3AF501C6ED7FD00F21382 /* IndexType.swift */; };
+		24A3AF531C6ED80700F21382 /* TesselatedQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3AF521C6ED80700F21382 /* TesselatedQuad.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24A3AF411C6ED7B000F21382 /* Shiny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shiny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3AF441C6ED7B000F21382 /* Shiny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shiny.h; sourceTree = "<group>"; };
 		24A3AF461C6ED7B000F21382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A3AF4C1C6ED7EE00F21382 /* VertexType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexType.swift; sourceTree = "<group>"; };
+		24A3AF4E1C6ED7F400F21382 /* MeshType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshType.swift; sourceTree = "<group>"; };
+		24A3AF501C6ED7FD00F21382 /* IndexType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexType.swift; sourceTree = "<group>"; };
+		24A3AF521C6ED80700F21382 /* TesselatedQuad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselatedQuad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +56,10 @@
 			children = (
 				24A3AF441C6ED7B000F21382 /* Shiny.h */,
 				24A3AF461C6ED7B000F21382 /* Info.plist */,
+				24A3AF4C1C6ED7EE00F21382 /* VertexType.swift */,
+				24A3AF4E1C6ED7F400F21382 /* MeshType.swift */,
+				24A3AF501C6ED7FD00F21382 /* IndexType.swift */,
+				24A3AF521C6ED80700F21382 /* TesselatedQuad.swift */,
 			);
 			path = Shiny;
 			sourceTree = "<group>";
@@ -130,6 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A3AF531C6ED80700F21382 /* TesselatedQuad.swift in Sources */,
+				24A3AF4F1C6ED7F400F21382 /* MeshType.swift in Sources */,
+				24A3AF511C6ED7FD00F21382 /* IndexType.swift in Sources */,
+				24A3AF4D1C6ED7EE00F21382 /* VertexType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +246,7 @@
 		24A3AF4A1C6ED7B000F21382 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -240,12 +257,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jameslintaylor.Shiny;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		24A3AF4B1C6ED7B000F21382 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
