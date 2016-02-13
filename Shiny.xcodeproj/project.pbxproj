@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245C03231C6F97580052E9DF /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245C03221C6F97580052E9DF /* PencilBox.framework */; };
 		24A3AF451C6ED7B000F21382 /* Shiny.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A3AF441C6ED7B000F21382 /* Shiny.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24EFAB3C1C6F85B7008B628A /* VertexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB351C6F85B7008B628A /* VertexType.swift */; };
 		24EFAB3D1C6F85B7008B628A /* MeshType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB361C6F85B7008B628A /* MeshType.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		245C03221C6F97580052E9DF /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilBox.framework; path = Carthage/Build/iOS/PencilBox.framework; sourceTree = "<group>"; };
 		24A3AF411C6ED7B000F21382 /* Shiny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shiny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3AF441C6ED7B000F21382 /* Shiny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shiny.h; sourceTree = "<group>"; };
 		24A3AF461C6ED7B000F21382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245C03231C6F97580052E9DF /* PencilBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 		24A3AF371C6ED7B000F21382 = {
 			isa = PBXGroup;
 			children = (
+				245C03221C6F97580052E9DF /* PencilBox.framework */,
 				24A3AF431C6ED7B000F21382 /* Shiny */,
 				24A3AF421C6ED7B000F21382 /* Products */,
 			);
@@ -95,6 +99,7 @@
 				24A3AF3D1C6ED7B000F21382 /* Frameworks */,
 				24A3AF3E1C6ED7B000F21382 /* Headers */,
 				24A3AF3F1C6ED7B000F21382 /* Resources */,
+				245C03251C6F9A8A0052E9DF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -145,6 +150,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		245C03251C6F9A8A0052E9DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PencilBox.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24A3AF3C1C6ED7B000F21382 /* Sources */ = {
@@ -263,8 +285,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shiny/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jameslintaylor.Shiny;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -281,8 +308,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shiny/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jameslintaylor.Shiny;
 				PRODUCT_NAME = "$(TARGET_NAME)";

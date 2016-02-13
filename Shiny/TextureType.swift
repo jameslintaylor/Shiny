@@ -10,15 +10,15 @@ import PencilBox
 import Metal
 
 // Geometry typealiases
-typealias TextureIndex = Point<Int>
-typealias TextureSize = Size<Int>
-typealias TextureRegion = Rectangle<Int>
-typealias TextureBounds = Rectangle<Int>
+public typealias TextureIndex = Point<Int>
+public typealias TextureSize = Size<Int>
+public typealias TextureRegion = Rectangle<Int>
+public typealias TextureBounds = Rectangle<Int>
 
 /// A wrapping type that houses a `MTLTexture` object and 
 /// exposes a few convenient methods for getting and setting 
 /// it's raw bytes.
-protocol TextureType {
+public protocol TextureType {
     /// The type of channel in the pixel.
     typealias Channel: PixelChannelType
     
@@ -36,7 +36,7 @@ protocol TextureType {
 }
 
 // + Computed properties
-extension TextureType {
+public extension TextureType {
     
     /// The width of the texture in pixels.
     var width: Int {
@@ -61,7 +61,7 @@ extension TextureType {
 
 // MARK: - Byte modifying methods
 
-extension TextureType where Channel: Zeroable {
+public extension TextureType where Channel: Zeroable {
     
     /// Returns the bytes in `self`'s backing texture in `region`.
     ///
@@ -112,17 +112,42 @@ extension TextureType where Channel: Zeroable {
     }
 }
 
-// MARK: - MTLCommandEncoder convenience extension
+// MARK: - MTLOrigin, MTLSize, MTLRegion convenience initializers
+
+public extension MTLOrigin {
+    init(_ point: TextureIndex) {
+        self.x = point.x
+        self.y = point.y
+        self.z = 0
+    }
+}
+
+public extension MTLSize {
+    init(_ size: TextureSize) {
+        self.width = size.width
+        self.height = size.height
+        self.depth = 1
+    }
+}
+
+public extension MTLRegion {
+    init(_ region: TextureRegion) {
+        self.origin = MTLOrigin(region.origin)
+        self.size = MTLSize(region.size)
+    }
+}
+
+// MARK: - MTLCommandEncoder + set texture
 
 // + MTLComputeCommandEncoder
-extension MTLComputeCommandEncoder {
+public extension MTLComputeCommandEncoder {
     func setTexture<T: TextureType>(texture: T, atIndex index: Int) {
         setTexture(texture.texture, atIndex: index)
     }
 }
 
 // + MTLRenderCommandEncoder
-extension MTLRenderCommandEncoder {
+public extension MTLRenderCommandEncoder {
     func setVertexTexture<T: TextureType>(texture: T, atIndex index: Int) {
         setVertexTexture(texture.texture, atIndex: index)
     }

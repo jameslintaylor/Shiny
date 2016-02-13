@@ -10,18 +10,18 @@ import Metal
 
 /// A type that maps one-to-one with a corresponding `MTLIndexType`
 /// and that can be used an index by a 'MeshType' instance. 
-protocol IndexType {
+public protocol IndexType {
     static var equivalentMTLIndexType: MTLIndexType { get }
 }
 
 extension UInt16: IndexType {
-    static var equivalentMTLIndexType: MTLIndexType {
+    public static var equivalentMTLIndexType: MTLIndexType {
         return .UInt16
     }
 }
 
 extension UInt32: IndexType {
-    static var equivalentMTLIndexType: MTLIndexType {
+    public static var equivalentMTLIndexType: MTLIndexType {
         return .UInt32
     }
 }

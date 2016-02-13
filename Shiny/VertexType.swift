@@ -10,4 +10,4 @@ import Metal
 
 /// A type that can be used as a vertex
 /// by a `MeshType` instance.
-protocol VertexType {}
+public protocol VertexType {}

@@ -10,7 +10,7 @@ import Metal
 
 /// A structure that contains vertex and index buffers 
 /// for a `MeshType` instance.
-struct MeshBufferContainer<Mesh: MeshType> {
+public struct MeshBufferContainer<Mesh: MeshType> {
     let mesh: Mesh
     
     private(set) var vertexBuffer: MTLBuffer
@@ -18,7 +18,7 @@ struct MeshBufferContainer<Mesh: MeshType> {
 }
 
 // + Initializers
-extension MeshBufferContainer {
+public extension MeshBufferContainer {
     init(mesh: Mesh, @noescape provider: BufferProvider) {
         self.mesh = mesh
         

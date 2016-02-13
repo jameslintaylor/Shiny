@@ -9,12 +9,12 @@
 import Metal
 
 /// Returns an `MTLBuffer` object for a given length in bytes and resource options.
-typealias BufferProvider = (length: Int, options: MTLResourceOptions) -> MTLBuffer
+public typealias BufferProvider = (length: Int, options: MTLResourceOptions) -> MTLBuffer
 
 /// Returns an `MTLTexture` object for a given `MTLTextureDescriptor`.
-typealias TextureProvider = (descriptor: MTLTextureDescriptor) -> MTLTexture
+public typealias TextureProvider = (descriptor: MTLTextureDescriptor) -> MTLTexture
 
-extension MTLDevice {
+public extension MTLDevice {
     
     /// Returns a new buffer provider that uses `self`.
     var basicBufferProvider: BufferProvider {

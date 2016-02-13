@@ -10,7 +10,7 @@ import Metal
 
 /// A type that can represent a channel of pixel data in 
 /// a `TextureType` instance.
-protocol PixelChannelType {}
+public protocol PixelChannelType {}
 
 // + Standard library conformance
 

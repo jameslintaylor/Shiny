@@ -9,7 +9,7 @@
 import Metal
 
 /// A type that contains vertex and index data.
-protocol MeshType {
+public protocol MeshType {
     typealias Vertex: VertexType
     typealias Index: IndexType
     
@@ -18,7 +18,7 @@ protocol MeshType {
 }
 
 // + Computed properties
-extension MeshType {
+public extension MeshType {
     
     /// The size of the vertices in bytes.
     var vertexDataSize: Int {
