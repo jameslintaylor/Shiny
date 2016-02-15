@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24032A431C70DB890027486A /* TesselatedQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A421C70DB890027486A /* TesselatedQuad.swift */; };
+		24032A4B1C721B890027486A /* UniformsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A4A1C721B890027486A /* UniformsType.swift */; };
+		24032A4D1C721BCA0027486A /* UniformsBufferContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A4C1C721BCA0027486A /* UniformsBufferContainer.swift */; };
 		245C03231C6F97580052E9DF /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245C03221C6F97580052E9DF /* PencilBox.framework */; };
 		24A3AF451C6ED7B000F21382 /* Shiny.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A3AF441C6ED7B000F21382 /* Shiny.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24C67B021C700E350022A954 /* BasicTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C67B011C700E350022A954 /* BasicTexture.swift */; };
 		24EFAB3C1C6F85B7008B628A /* VertexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB351C6F85B7008B628A /* VertexType.swift */; };
 		24EFAB3D1C6F85B7008B628A /* MeshType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB361C6F85B7008B628A /* MeshType.swift */; };
 		24EFAB3E1C6F85B7008B628A /* IndexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB371C6F85B7008B628A /* IndexType.swift */; };
@@ -19,10 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24032A421C70DB890027486A /* TesselatedQuad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselatedQuad.swift; sourceTree = "<group>"; };
+		24032A4A1C721B890027486A /* UniformsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformsType.swift; sourceTree = "<group>"; };
+		24032A4C1C721BCA0027486A /* UniformsBufferContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformsBufferContainer.swift; sourceTree = "<group>"; };
 		245C03221C6F97580052E9DF /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilBox.framework; path = Carthage/Build/iOS/PencilBox.framework; sourceTree = "<group>"; };
 		24A3AF411C6ED7B000F21382 /* Shiny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shiny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3AF441C6ED7B000F21382 /* Shiny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shiny.h; sourceTree = "<group>"; };
 		24A3AF461C6ED7B000F21382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24C67B011C700E350022A954 /* BasicTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTexture.swift; sourceTree = "<group>"; };
 		24EFAB351C6F85B7008B628A /* VertexType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexType.swift; sourceTree = "<group>"; };
 		24EFAB361C6F85B7008B628A /* MeshType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshType.swift; sourceTree = "<group>"; };
 		24EFAB371C6F85B7008B628A /* IndexType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexType.swift; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 			children = (
 				24A3AF441C6ED7B000F21382 /* Shiny.h */,
 				24A3AF461C6ED7B000F21382 /* Info.plist */,
+				24032A4A1C721B890027486A /* UniformsType.swift */,
+				24032A4C1C721BCA0027486A /* UniformsBufferContainer.swift */,
 				24EFAB351C6F85B7008B628A /* VertexType.swift */,
 				24EFAB361C6F85B7008B628A /* MeshType.swift */,
 				24EFAB371C6F85B7008B628A /* IndexType.swift */,
@@ -73,6 +83,8 @@
 				24EFAB391C6F85B7008B628A /* TextureType.swift */,
 				24EFAB3A1C6F85B7008B628A /* MeshBufferContainer.swift */,
 				24EFAB3B1C6F85B7008B628A /* DeviceProviders.swift */,
+				24C67B011C700E350022A954 /* BasicTexture.swift */,
+				24032A421C70DB890027486A /* TesselatedQuad.swift */,
 			);
 			path = Shiny;
 			sourceTree = "<group>";
@@ -173,13 +185,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C67B021C700E350022A954 /* BasicTexture.swift in Sources */,
 				24EFAB421C6F85B7008B628A /* DeviceProviders.swift in Sources */,
 				24EFAB401C6F85B7008B628A /* TextureType.swift in Sources */,
 				24EFAB3D1C6F85B7008B628A /* MeshType.swift in Sources */,
+				24032A4D1C721BCA0027486A /* UniformsBufferContainer.swift in Sources */,
+				24032A4B1C721B890027486A /* UniformsType.swift in Sources */,
 				24EFAB411C6F85B7008B628A /* MeshBufferContainer.swift in Sources */,
 				24EFAB3E1C6F85B7008B628A /* IndexType.swift in Sources */,
 				24EFAB3F1C6F85B7008B628A /* PixelChannelType.swift in Sources */,
 				24EFAB3C1C6F85B7008B628A /* VertexType.swift in Sources */,
+				24032A431C70DB890027486A /* TesselatedQuad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
