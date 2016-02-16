@@ -6,6 +6,7 @@
 //  Copyright © 2016 James Taylor. All rights reserved.
 //
 
+import Metal
 import Foundation
 import CoreGraphics
 
