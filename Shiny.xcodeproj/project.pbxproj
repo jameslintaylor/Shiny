@@ -10,6 +10,10 @@
 		24032A431C70DB890027486A /* TesselatedQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A421C70DB890027486A /* TesselatedQuad.swift */; };
 		24032A4B1C721B890027486A /* UniformsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A4A1C721B890027486A /* UniformsType.swift */; };
 		24032A4D1C721BCA0027486A /* UniformsBufferContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24032A4C1C721BCA0027486A /* UniformsBufferContainer.swift */; };
+		2455A4901C7276C4005DEAD7 /* SIMD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2455A48F1C7276C4005DEAD7 /* SIMD.swift */; };
+		2455A4921C727702005DEAD7 /* Perspective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2455A4911C727702005DEAD7 /* Perspective.swift */; };
+		2455A4941C72770A005DEAD7 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2455A4931C72770A005DEAD7 /* Translation.swift */; };
+		2455A4961C72770F005DEAD7 /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2455A4951C72770F005DEAD7 /* Rotation.swift */; };
 		245C03231C6F97580052E9DF /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245C03221C6F97580052E9DF /* PencilBox.framework */; };
 		24A3AF451C6ED7B000F21382 /* Shiny.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A3AF441C6ED7B000F21382 /* Shiny.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24C67B021C700E350022A954 /* BasicTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C67B011C700E350022A954 /* BasicTexture.swift */; };
@@ -26,6 +30,10 @@
 		24032A421C70DB890027486A /* TesselatedQuad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselatedQuad.swift; sourceTree = "<group>"; };
 		24032A4A1C721B890027486A /* UniformsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformsType.swift; sourceTree = "<group>"; };
 		24032A4C1C721BCA0027486A /* UniformsBufferContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformsBufferContainer.swift; sourceTree = "<group>"; };
+		2455A48F1C7276C4005DEAD7 /* SIMD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIMD.swift; sourceTree = "<group>"; };
+		2455A4911C727702005DEAD7 /* Perspective.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perspective.swift; sourceTree = "<group>"; };
+		2455A4931C72770A005DEAD7 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		2455A4951C72770F005DEAD7 /* Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		245C03221C6F97580052E9DF /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilBox.framework; path = Carthage/Build/iOS/PencilBox.framework; sourceTree = "<group>"; };
 		24A3AF411C6ED7B000F21382 /* Shiny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shiny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3AF441C6ED7B000F21382 /* Shiny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shiny.h; sourceTree = "<group>"; };
@@ -52,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2455A48E1C72769D005DEAD7 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				2455A48F1C7276C4005DEAD7 /* SIMD.swift */,
+				2455A4911C727702005DEAD7 /* Perspective.swift */,
+				2455A4931C72770A005DEAD7 /* Translation.swift */,
+				2455A4951C72770F005DEAD7 /* Rotation.swift */,
+			);
+			name = Matrix;
+			sourceTree = "<group>";
+		};
 		24A3AF371C6ED7B000F21382 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +91,7 @@
 		24A3AF431C6ED7B000F21382 /* Shiny */ = {
 			isa = PBXGroup;
 			children = (
+				2455A48E1C72769D005DEAD7 /* Matrix */,
 				24A3AF441C6ED7B000F21382 /* Shiny.h */,
 				24A3AF461C6ED7B000F21382 /* Info.plist */,
 				24032A4A1C721B890027486A /* UniformsType.swift */,
@@ -111,7 +131,7 @@
 				24A3AF3D1C6ED7B000F21382 /* Frameworks */,
 				24A3AF3E1C6ED7B000F21382 /* Headers */,
 				24A3AF3F1C6ED7B000F21382 /* Resources */,
-				245C03251C6F9A8A0052E9DF /* ShellScript */,
+				245C03251C6F9A8A0052E9DF /* Copy Frameworks Run Script */,
 			);
 			buildRules = (
 			);
@@ -164,7 +184,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		245C03251C6F9A8A0052E9DF /* ShellScript */ = {
+		245C03251C6F9A8A0052E9DF /* Copy Frameworks Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -172,6 +192,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/PencilBox.framework",
 			);
+			name = "Copy Frameworks Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,13 +210,17 @@
 				24EFAB421C6F85B7008B628A /* DeviceProviders.swift in Sources */,
 				24EFAB401C6F85B7008B628A /* TextureType.swift in Sources */,
 				24EFAB3D1C6F85B7008B628A /* MeshType.swift in Sources */,
+				2455A4921C727702005DEAD7 /* Perspective.swift in Sources */,
+				2455A4901C7276C4005DEAD7 /* SIMD.swift in Sources */,
 				24032A4D1C721BCA0027486A /* UniformsBufferContainer.swift in Sources */,
 				24032A4B1C721B890027486A /* UniformsType.swift in Sources */,
 				24EFAB411C6F85B7008B628A /* MeshBufferContainer.swift in Sources */,
+				2455A4961C72770F005DEAD7 /* Rotation.swift in Sources */,
 				24EFAB3E1C6F85B7008B628A /* IndexType.swift in Sources */,
 				24EFAB3F1C6F85B7008B628A /* PixelChannelType.swift in Sources */,
 				24EFAB3C1C6F85B7008B628A /* VertexType.swift in Sources */,
 				24032A431C70DB890027486A /* TesselatedQuad.swift in Sources */,
+				2455A4941C72770A005DEAD7 /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
