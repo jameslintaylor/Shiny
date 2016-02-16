@@ -117,3 +117,17 @@ public extension matrix_float4x4 {
         return matrix_float3x3(rows: (r1, r2, r3))
     }
 }
+
+// MARK: - Multiplication
+
+public func *(lhs: matrix_float2x2, rhs: matrix_float2x2) -> matrix_float2x2 {
+    return matrix_multiply(lhs, rhs)
+}
+
+public func *(lhs: matrix_float3x3, rhs: matrix_float3x3) -> matrix_float3x3 {
+    return matrix_multiply(lhs, rhs)
+}
+
+public func *(lhs: matrix_float4x4, rhs: matrix_float4x4) -> matrix_float4x4 {
+    return matrix_multiply(lhs, rhs)
+}

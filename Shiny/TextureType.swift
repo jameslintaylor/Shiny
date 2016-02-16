@@ -7,7 +7,9 @@
 //
 
 import PencilBox
+
 import Metal
+import MetalPerformanceShaders
 
 // Geometry typealiases
 public typealias TextureIndex = Point<Int>
@@ -154,5 +156,12 @@ public extension MTLRenderCommandEncoder {
     
     func setFragmentTexture<T: TextureType>(texture: T, atIndex index: Int) {
         setFragmentTexture(texture.texture, atIndex: index)
+    }
+}
+
+// MARK: - MetalPerformanceShaders convenience
+public extension MPSUnaryImageKernel {
+    func encodeToCommandBuffer<T: TextureType, U: TextureType>(commandBuffer: MTLCommandBuffer, sourceTexture: T, destinationTexture: U) {
+        encodeToCommandBuffer(commandBuffer, sourceTexture: sourceTexture.texture, destinationTexture: destinationTexture.texture)
     }
 }

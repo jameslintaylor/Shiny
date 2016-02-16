@@ -32,7 +32,7 @@ public extension TesselatedQuad where Vertex: Texturable {
         self.init(frame: frame, dimensions: dimensions)
         
         // Assign texture coordinates to the vertices
-        let textureCoordinates = generateTesselatedCoordinatesInFrame(textureFrame, withDimensions: dimensions)
+        let textureCoordinates = generateTesselatedCoordinatesInFrame(textureFrame, withDimensions: dimensions, flippedVertically: true)
         self.vertices = zip(self.vertices, textureCoordinates).map() {
             var vertex = $0
             vertex.textureCoordinates = Point(x: $1.x, y: $1.y)
