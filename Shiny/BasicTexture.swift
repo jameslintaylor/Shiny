@@ -6,8 +6,6 @@
 //  Copyright © 2016 James Taylor. All rights reserved.
 //
 
-import Metal
-import Foundation
 import CoreGraphics
 
 /// A 2-Dimensional texture with the BGRA8 pixel format.
