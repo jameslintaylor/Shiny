@@ -8,32 +8,36 @@
 
 import Metal
 
+/// A structure containing a `UniformsType` instance and exposing
+/// properties and methods for updating it's `uniforms` and passing
+/// it's associated `MTLBuffer` object.
 public struct UniformsBufferContainer<Uniforms: UniformsType> {
     
     public var uniforms: Uniforms {
         didSet {
-            updateBuffer()
+            updateBuffers()
         }
     }
     
-    private var buffer: MTLBuffer
+    private var bufferIndex: Int = 0
+    private var buffers: [MTLBuffer]
     
-    public init(uniforms: Uniforms, provider: BufferProvider) {
+    public init(uniforms: Uniforms, provider: BufferProvider, capacity: Int = 1) {
         self.uniforms = uniforms
-        self.buffer = provider(length: sizeof(Uniforms), options: .CPUCacheModeDefaultCache)
-        
-        updateBuffer()
+        self.buffers = (0 ..< capacity).map { _ in provider(length: sizeof(Uniforms), options: .StorageModeShared) }
+        updateBuffers()
     }
     
-    private mutating func updateBuffer() {
-        let bufferPointer = buffer.contents()
-        memcpy(bufferPointer, &uniforms, sizeof(Uniforms))
+    private mutating func updateBuffers() {
+        for buffer in buffers {
+            let bufferPointer = buffer.contents()
+            memcpy(bufferPointer, &uniforms, sizeof(Uniforms))
+        }
     }
-}
-
-// MTLRenderCommandEncoder convenience
-public extension MTLRenderCommandEncoder {
-    func setVertexBuffer<Uniforms: UniformsType>(buffer: UniformsBufferContainer<Uniforms>, atIndex index: Int) {
-        setVertexBuffer(buffer.buffer, offset: 0, atIndex: index)
+    
+    /// Returns the next available buffer.
+    public mutating func nextBuffer() -> MTLBuffer {
+        defer { bufferIndex = (bufferIndex + 1) % buffers.count }
+        return buffers[bufferIndex]
     }
 }
