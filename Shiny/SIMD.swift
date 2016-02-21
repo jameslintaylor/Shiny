@@ -13,19 +13,52 @@ import simd
 public extension matrix_float3x3 {
     
     // Row 1
-    var m11: Float { return columns.0.x }
-    var m12: Float { return columns.1.x }
-    var m13: Float { return columns.2.x }
+    var m11: Float {
+        get { return columns.0.x }
+        set { columns.0.x = newValue }
+    }
+    
+    var m12: Float {
+        get { return columns.1.x }
+        set { columns.1.x = newValue }
+    }
+    
+    var m13: Float {
+        get { return columns.2.x }
+        set { columns.2.x = newValue }
+    }
     
     // Row 2
-    var m21: Float { return columns.0.y }
-    var m22: Float { return columns.1.y }
-    var m23: Float { return columns.2.y }
+    var m21: Float {
+        get { return columns.0.y }
+        set { columns.0.y = newValue }
+    }
+    
+    var m22: Float {
+        get { return columns.1.y }
+        set { columns.1.y = newValue }
+    }
+    
+    var m23: Float {
+        get { return columns.2.y }
+        set { columns.2.y = newValue }
+    }
     
     // Row 3
-    var m31: Float { return columns.0.z }
-    var m32: Float { return columns.1.z }
-    var m33: Float { return columns.2.z }
+    var m31: Float {
+        get { return columns.0.z }
+        set { columns.0.z = newValue }
+    }
+    
+    var m32: Float {
+        get { return columns.1.z }
+        set { columns.1.z = newValue }
+    }
+    
+    var m33: Float {
+        get { return columns.2.z }
+        set { columns.2.z = newValue }
+    }
     
     init(m11: Float, m12: Float, m13: Float, m21: Float, m22: Float, m23: Float, m31: Float, m32: Float, m33: Float) {
         self.columns.0 = [m11, m21, m31]
@@ -56,28 +89,88 @@ public extension matrix_float3x3 {
 public extension matrix_float4x4 {
     
     // Row 1
-    var m11: Float { return columns.0.x }
-    var m12: Float { return columns.1.x }
-    var m13: Float { return columns.2.x }
-    var m14: Float { return columns.3.x }
+    var m11: Float {
+        get { return columns.0.x }
+        set { columns.0.x = newValue }
+    }
+    
+    var m12: Float {
+        get { return columns.1.x }
+        set { columns.1.x = newValue }
+    }
+    
+    var m13: Float {
+        get { return columns.2.x }
+        set { columns.2.x = newValue }
+    }
+    
+    var m14: Float {
+        get { return columns.3.x }
+        set { columns.3.x = newValue }
+    }
     
     // Row 2
-    var m21: Float { return columns.0.y }
-    var m22: Float { return columns.1.y }
-    var m23: Float { return columns.2.y }
-    var m24: Float { return columns.3.y }
+    var m21: Float {
+        get { return columns.0.y }
+        set { columns.0.y = newValue }
+    }
+    
+    var m22: Float {
+        get { return columns.1.y }
+        set { columns.1.y = newValue }
+    }
+    
+    var m23: Float {
+        get { return columns.2.y }
+        set { columns.2.y = newValue }
+    }
+    
+    var m24: Float {
+        get { return columns.3.y }
+        set { columns.3.y = newValue }
+    }
     
     // Row 3
-    var m31: Float { return columns.0.z }
-    var m32: Float { return columns.1.z }
-    var m33: Float { return columns.2.z }
-    var m34: Float { return columns.3.z }
+    var m31: Float {
+        get { return columns.0.z }
+        set { columns.0.z = newValue }
+    }
+    
+    var m32: Float {
+        get { return columns.1.z }
+        set { columns.1.z = newValue }
+    }
+    
+    var m33: Float {
+        get { return columns.2.z }
+        set { columns.2.z = newValue }
+    }
+    
+    var m34: Float {
+        get { return columns.3.z }
+        set { columns.3.z = newValue }
+    }
     
     // Row 4
-    var m41: Float { return columns.0.w }
-    var m42: Float { return columns.1.w }
-    var m43: Float { return columns.2.w }
-    var m44: Float { return columns.3.w }
+    var m41: Float {
+        get { return columns.0.w }
+        set { columns.0.w = newValue }
+    }
+    
+    var m42: Float {
+        get { return columns.1.w }
+        set { columns.1.w = newValue }
+    }
+    
+    var m43: Float {
+        get { return columns.2.w }
+        set { columns.2.w = newValue }
+    }
+    
+    var m44: Float {
+        get { return columns.3.w }
+        set { columns.3.w = newValue }
+    }
     
     init(m11: Float, m12: Float, m13: Float, m14: Float, m21: Float, m22: Float, m23: Float, m24: Float, m31: Float, m32: Float, m33: Float, m34: Float, m41: Float, m42: Float, m43: Float, m44: Float) {
         self.columns.0 = [m11, m21, m31, m41]
