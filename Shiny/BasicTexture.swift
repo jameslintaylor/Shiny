@@ -19,8 +19,8 @@ public struct BasicBGRA8Texture: TextureType {
     public var texture: MTLTexture
     
     /// Initialize a new BGRA8 texture with dimensions given by `size`.
-    public init(size: TextureSize, @noescape provider: TextureProvider) {
-        let descriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.BGRA8Unorm, width: size.width, height: size.height, mipmapped: false)
+    public init(size: TextureSize, mipmapped: Bool = false, @noescape provider: TextureProvider) {
+        let descriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.BGRA8Unorm, width: size.width, height: size.height, mipmapped: mipmapped)
         texture = provider(descriptor: descriptor)
     }
 }

@@ -65,52 +65,58 @@ public extension TextureType {
 
 public extension TextureType where Channel: ZeroRepresentable {
     
-    /// Returns the bytes in `self`'s backing texture in `region`.
+    /// Returns the bytes in `self`'s backing texture in `region`. The given
+    /// `region` parameter should be framed in reference to the texture's 
+    /// native resolution or `bounds`.
     ///
     /// - Precondition: 
     /// `region` must be contained within the bounds of `self`.
-    func getBytesInRegion(region: TextureRegion) -> [Channel] {
+    func getBytesInRegion(region: TextureRegion, mipmapLevel: Int = 0) -> [Channel] {
         precondition(bounds.contains(region), "region (\(region)) must be contained within the bounds of the texture (\(bounds))")
         
         var bytes = [Channel](count: region.area * channelsPerPixel, repeatedValue: Channel.ZeroValue)
-        texture.getBytes(&bytes, bytesPerRow: region.width * pixelSizeInBytes, fromRegion: MTLRegion(region), mipmapLevel: 0)
+        texture.getBytes(&bytes, bytesPerRow: region.width * pixelSizeInBytes, fromRegion: MTLRegion(region), mipmapLevel: mipmapLevel)
         return bytes
     }
     
     /// Replaces the bytes in `self`'s backing texture in `region` with `bytes`.
+    /// The given `region` parameter should be framed in reference to the texture's
+    /// native resolution or `bounds`.
     ///
     /// - Precondition:
     /// `region` must be contained within the bounds of `self`.
-    func replaceBytesInRegion(region: TextureRegion, withBytes bytes: [Channel]) {
+    func replaceBytesInRegion(region: TextureRegion, mipmapLevel: Int = 0, withBytes bytes: [Channel]) {
         precondition(bounds.contains(region), "region must be contained within the bounds of the texture")
         
-        if bytes.count != region.area * channelsPerPixel {
-            print("warning: replacing a region of \(region.area) pixels with \(region.area * channelsPerPixel) channels with bytes containing data for \(bytes.count/channelsPerPixel) pixels and \(bytes.count) channels.")
-        }
+        assert(region.area/pow(2, mipmapLevel * 2) == bytes.count/channelsPerPixel, "Failed assertion: attempting to replace (\(region.area/pow(2, mipmapLevel * 2))) pixels with bytes for (\(bytes.count/channelsPerPixel)) pixels.")
         
-        texture.replaceRegion(MTLRegion(region), mipmapLevel: 0, withBytes: bytes, bytesPerRow: region.width * sizeof(Channel) * channelsPerPixel)
+        texture.replaceRegion(MTLRegion(region), mipmapLevel: mipmapLevel, withBytes: bytes, bytesPerRow: region.width * sizeof(Channel) * channelsPerPixel)
     }
     
     /// Returns the individual pixel bytes in `self`'s backing texture at `index`.
+    /// The given `index` paremeter should be indexed relative to the texture's
+    /// native resolution or `bounds`.
     ///
     /// - Precondition:
     /// `index` must be contained within the bounds of `self`.
-    func getBytesAtIndex(index: TextureIndex) -> [Channel] {
+    func getBytesAtIndex(index: TextureIndex, mipmapLevel: Int = 0) -> [Channel] {
         precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
         
         let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
-        return getBytesInRegion(region)
+        return getBytesInRegion(region, mipmapLevel: mipmapLevel)
     }
     
     /// Replaces the individual pixel's bytes in `self`'s backing texture at `index` with `bytes`.
+    /// The given `index` parameter should be indexed relative to the texture's native resolution
+    /// or `bounds`.
     ///
     /// - Precondition:
     /// `index` must be contained within the bounds of `self`.
-    func replaceBytes(at index: TextureIndex, with bytes: [Channel]) {
+    func replaceBytes(at index: TextureIndex, mipmapLevel: Int = 0, with bytes: [Channel]) {
         precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
         
         let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
-        replaceBytesInRegion(region, withBytes: bytes)
+        replaceBytesInRegion(region, mipmapLevel: mipmapLevel, withBytes: bytes)
     }
 }
 
@@ -164,4 +170,9 @@ public extension MPSUnaryImageKernel {
     func encodeToCommandBuffer<T: TextureType, U: TextureType>(commandBuffer: MTLCommandBuffer, sourceTexture: T, destinationTexture: U) {
         encodeToCommandBuffer(commandBuffer, sourceTexture: sourceTexture.texture, destinationTexture: destinationTexture.texture)
     }
+}
+
+// MARK: - Helpers
+func pow(x: Int, _ y: Int) -> Int {
+    return Int(pow(Double(x), Double(y)))
 }
