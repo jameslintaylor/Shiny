@@ -173,6 +173,6 @@ public extension MPSUnaryImageKernel {
 }
 
 // MARK: - Helpers
-func pow(x: Int, _ y: Int) -> Int {
+private func pow(x: Int, _ y: Int) -> Int {
     return Int(pow(Double(x), Double(y)))
 }

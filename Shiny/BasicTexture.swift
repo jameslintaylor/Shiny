@@ -53,5 +53,3 @@ public extension BasicBGRA8Texture {
         replaceBytesInRegion(bounds, withBytes: bytes)
     }
 }
-
-// MARK: - Helpers
