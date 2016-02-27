@@ -131,7 +131,6 @@
 				24A3AF3D1C6ED7B000F21382 /* Frameworks */,
 				24A3AF3E1C6ED7B000F21382 /* Headers */,
 				24A3AF3F1C6ED7B000F21382 /* Resources */,
-				245C03251C6F9A8A0052E9DF /* Copy Frameworks Run Script */,
 			);
 			buildRules = (
 			);
@@ -182,24 +181,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		245C03251C6F9A8A0052E9DF /* Copy Frameworks Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PencilBox.framework",
-			);
-			name = "Copy Frameworks Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24A3AF3C1C6ED7B000F21382 /* Sources */ = {

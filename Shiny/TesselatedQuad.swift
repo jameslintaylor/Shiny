@@ -19,7 +19,7 @@ public struct TesselatedQuad<Vertex: VertexType where Vertex: Positionable>: Mes
         
         // Position the vertices
         let positions = generateTesselatedCoordinatesInFrame(frame, withDimensions: dimensions)
-        self.vertices = zip(self.vertices, positions).map() {
+        self.vertices = zip(self.vertices, positions).map {
             var vertex = $0
             vertex.position = Point(x: $1.x, y: $1.y)
             return vertex
@@ -33,7 +33,7 @@ public extension TesselatedQuad where Vertex: Texturable {
         
         // Assign texture coordinates to the vertices
         let textureCoordinates = generateTesselatedCoordinatesInFrame(textureFrame, withDimensions: dimensions, flippedVertically: true)
-        self.vertices = zip(self.vertices, textureCoordinates).map() {
+        self.vertices = zip(self.vertices, textureCoordinates).map {
             var vertex = $0
             vertex.textureCoordinates = Point(x: $1.x, y: $1.y)
             return vertex
