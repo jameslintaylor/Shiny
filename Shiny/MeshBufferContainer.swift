@@ -19,12 +19,12 @@ public struct MeshBufferContainer<Mesh: MeshType> {
 
 // + Initializers
 public extension MeshBufferContainer {
-    init(mesh: Mesh, @noescape provider: BufferProvider) {
+    init(device: MTLDevice, mesh: Mesh) {
         self.mesh = mesh
         
         // create buffers
-        vertexBuffer = provider(length: mesh.vertexDataSize, options: .CPUCacheModeDefaultCache)
-        indexBuffer = provider(length: mesh.indexDataSize, options: .CPUCacheModeDefaultCache)
+        vertexBuffer = device.newBufferWithLength(mesh.vertexDataSize, options: .CPUCacheModeDefaultCache)
+        indexBuffer = device.newBufferWithLength(mesh.indexDataSize, options: .CPUCacheModeDefaultCache)
         
         // copy data into buffers
         memcpy(vertexBuffer.contents(), mesh.vertices, mesh.vertexDataSize)

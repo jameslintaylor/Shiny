@@ -52,7 +52,7 @@ public extension TextureType {
     
     /// The bounds of the texture with dimensions in pixels.
     var bounds: TextureBounds {
-        return Rectangle(origin: TextureIndex.Zero, size: TextureSize(width: texture.width, height: texture.height))
+        return Rectangle(origin: TextureIndex.zero, size: TextureSize(width: texture.width, height: texture.height))
     }
     
     /// The size of an individual pixel in bytes.
@@ -63,20 +63,32 @@ public extension TextureType {
 
 // MARK: - Byte modifying methods
 
-public extension TextureType where Channel: ZeroRepresentable {
+public extension TextureType {
     
     /// Returns the bytes in `self`'s backing texture in `region`. The given
-    /// `region` parameter should be framed in reference to the texture's 
+    /// `region` parameter should be framed in reference to the texture's
     /// native resolution or `bounds`.
     ///
-    /// - Precondition: 
+    /// - Precondition:
     /// `region` must be contained within the bounds of `self`.
-    func getBytesInRegion(region: TextureRegion, mipmapLevel: Int = 0) -> [Channel] {
+    func getBytes(inout bytes: [Channel], inRegion region: TextureRegion, mipmapLevel: Int = 0) -> [Channel] {
         precondition(bounds.contains(region), "region (\(region)) must be contained within the bounds of the texture (\(bounds))")
         
-        var bytes = [Channel](count: region.area * channelsPerPixel, repeatedValue: Channel.ZeroValue)
         texture.getBytes(&bytes, bytesPerRow: region.width * pixelSizeInBytes, fromRegion: MTLRegion(region), mipmapLevel: mipmapLevel)
         return bytes
+    }
+    
+    /// Returns the individual pixel bytes in `self`'s backing texture at `index`.
+    /// The given `index` paremeter should be indexed relative to the texture's
+    /// native resolution or `bounds`.
+    ///
+    /// - Precondition:
+    /// `index` must be contained within the bounds of `self`.
+    func getBytes(inout bytes: [Channel], atIndex index: TextureIndex, mipmapLevel: Int = 0) -> [Channel] {
+        precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
+        
+        let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
+        return getBytes(&bytes, inRegion: region, mipmapLevel: mipmapLevel)
     }
     
     /// Replaces the bytes in `self`'s backing texture in `region` with `bytes`.
@@ -93,19 +105,6 @@ public extension TextureType where Channel: ZeroRepresentable {
         texture.replaceRegion(MTLRegion(region), mipmapLevel: mipmapLevel, withBytes: bytes, bytesPerRow: region.width * sizeof(Channel) * channelsPerPixel)
     }
     
-    /// Returns the individual pixel bytes in `self`'s backing texture at `index`.
-    /// The given `index` paremeter should be indexed relative to the texture's
-    /// native resolution or `bounds`.
-    ///
-    /// - Precondition:
-    /// `index` must be contained within the bounds of `self`.
-    func getBytesAtIndex(index: TextureIndex, mipmapLevel: Int = 0) -> [Channel] {
-        precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
-        
-        let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
-        return getBytesInRegion(region, mipmapLevel: mipmapLevel)
-    }
-    
     /// Replaces the individual pixel's bytes in `self`'s backing texture at `index` with `bytes`.
     /// The given `index` parameter should be indexed relative to the texture's native resolution
     /// or `bounds`.
@@ -117,6 +116,36 @@ public extension TextureType where Channel: ZeroRepresentable {
         
         let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
         replaceBytesInRegion(region, mipmapLevel: mipmapLevel, withBytes: bytes)
+    }
+}
+
+public extension TextureType where Channel: ZeroRepresentable {
+    
+    /// Returns the bytes in `self`'s backing texture in `region`. The given
+    /// `region` parameter should be framed in reference to the texture's 
+    /// native resolution or `bounds`.
+    ///
+    /// - Precondition: 
+    /// `region` must be contained within the bounds of `self`.
+    func getBytesInRegion(region: TextureRegion, mipmapLevel: Int = 0) -> [Channel] {
+        precondition(bounds.contains(region), "region (\(region)) must be contained within the bounds of the texture (\(bounds))")
+        
+        var bytes = [Channel](count: region.area * channelsPerPixel, repeatedValue: Channel.zero)
+        texture.getBytes(&bytes, bytesPerRow: region.width * pixelSizeInBytes, fromRegion: MTLRegion(region), mipmapLevel: mipmapLevel)
+        return bytes
+    }
+    
+    /// Returns the individual pixel bytes in `self`'s backing texture at `index`.
+    /// The given `index` paremeter should be indexed relative to the texture's
+    /// native resolution or `bounds`.
+    ///
+    /// - Precondition:
+    /// `index` must be contained within the bounds of `self`.
+    func getBytesAtIndex(index: TextureIndex, mipmapLevel: Int = 0) -> [Channel] {
+        precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
+        
+        let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))
+        return getBytesInRegion(region, mipmapLevel: mipmapLevel)
     }
 }
 

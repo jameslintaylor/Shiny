@@ -11,7 +11,7 @@ import CoreGraphics
 
 /// A 2-Dimensional texture with the BGRA8 pixel format.
 public struct BasicBGRA8Texture: TextureType {
-
+    
     public typealias Channel = UInt8
     public let channelsPerPixel: Int = 4
     
@@ -19,9 +19,11 @@ public struct BasicBGRA8Texture: TextureType {
     public var texture: MTLTexture
     
     /// Initialize a new BGRA8 texture with dimensions given by `size`.
-    public init(size: TextureSize, mipmapped: Bool = false, @noescape provider: TextureProvider) {
+    public init(device: MTLDevice, size: TextureSize, mipmapped: Bool = false) {
+        
         let descriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.BGRA8Unorm, width: size.width, height: size.height, mipmapped: mipmapped)
-        texture = provider(descriptor: descriptor)
+        
+        texture = device.newTextureWithDescriptor(descriptor)
     }
 }
 
@@ -30,12 +32,12 @@ public extension BasicBGRA8Texture {
     /// Initializes a new texture with the bytes in the assets image named `imageName`.
     ///
     /// This initializer fails if no valid image is found.
-    init?(named name: String, @noescape provider: TextureProvider) {
+    init?(device: MTLDevice, imageNamed name: String) {
         guard let image = UIImage(named: name)?.CGImage else { return nil  }
         let width = CGImageGetWidth(image)
         let height = CGImageGetHeight(image)
         
-        self.init(size: TextureSize(width: width, height: height), provider: provider)
+        self.init(device: device, size: TextureSize(width: width, height: height))
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         var bytes = [UInt8](count: width * height * 4, repeatedValue: 0)
