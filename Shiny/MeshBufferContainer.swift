@@ -54,11 +54,11 @@ public extension MeshBufferContainer {
 // + MTLRenderCommandEncoder convenience
 public extension MTLRenderCommandEncoder {
     
-    func drawIndexedPrimitivesWithType<Mesh: MeshType>(type: MTLPrimitiveType, fromMesh mesh: MeshBufferContainer<Mesh>) {
-        drawIndexedPrimitives(type, indexCount: mesh.indexCount, indexType: mesh.indexType, indexBuffer: mesh.indexBuffer, indexBufferOffset: 0)
+    func drawMesh<Mesh: MeshType>(mesh: MeshBufferContainer<Mesh>) {
+        drawIndexedPrimitives(.Triangle, indexCount: mesh.indexCount, indexType: mesh.indexType, indexBuffer: mesh.indexBuffer, indexBufferOffset: 0)
     }
     
-    func drawIndexedPrimitivesWithType<Mesh: MeshType>(type: MTLPrimitiveType, fromMesh mesh: MeshBufferContainer<Mesh>, instanceCount: Int) {
-        drawIndexedPrimitives(type, indexCount: mesh.indexCount, indexType: mesh.indexType, indexBuffer: mesh.indexBuffer, indexBufferOffset: 0, instanceCount: instanceCount)
+    func drawMesh<Mesh: MeshType>(mesh: MeshBufferContainer<Mesh>, instanceCount: Int) {
+        drawIndexedPrimitives(.Triangle, indexCount: mesh.indexCount, indexType: mesh.indexType, indexBuffer: mesh.indexBuffer, indexBufferOffset: 0, instanceCount: instanceCount)
     }
 }
