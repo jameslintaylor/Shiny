@@ -111,7 +111,7 @@ public extension TextureType {
     ///
     /// - Precondition:
     /// `index` must be contained within the bounds of `self`.
-    func replaceBytes(at index: TextureIndex, mipmapLevel: Int = 0, with bytes: [Channel]) {
+    func replaceBytesAtIndex(index: TextureIndex, mipmapLevel: Int = 0, with bytes: [Channel]) {
         precondition(bounds.contains(index), "index (\(index)) must be contained within the bounds of the texture (\(bounds))")
         
         let region = TextureRegion(origin: index, size: TextureSize(width: 1, height: 1))

@@ -19,10 +19,23 @@
 		24EFAB3E1C6F85B7008B628A /* IndexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB371C6F85B7008B628A /* IndexType.swift */; };
 		24EFAB3F1C6F85B7008B628A /* PixelChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB381C6F85B7008B628A /* PixelChannelType.swift */; };
 		24EFAB401C6F85B7008B628A /* TextureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB391C6F85B7008B628A /* TextureType.swift */; };
-		24EFAB411C6F85B7008B628A /* MeshBufferContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB3A1C6F85B7008B628A /* MeshBufferContainer.swift */; };
 		2A687D9B1C8397A400C399FA /* MetalContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A687D9A1C8397A400C399FA /* MetalContext.swift */; };
 		2A687DA11C83F71000C399FA /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A687DA01C83F71000C399FA /* PencilBox.framework */; };
+		2A7894DF1C877AC500A5B94C /* PencilBox.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A687DA01C83F71000C399FA /* PencilBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2A7894DE1C877ABC00A5B94C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2A7894DF1C877AC500A5B94C /* PencilBox.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		24032A421C70DB890027486A /* TesselatedQuad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselatedQuad.swift; sourceTree = "<group>"; };
@@ -39,7 +52,6 @@
 		24EFAB371C6F85B7008B628A /* IndexType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexType.swift; sourceTree = "<group>"; };
 		24EFAB381C6F85B7008B628A /* PixelChannelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelChannelType.swift; sourceTree = "<group>"; };
 		24EFAB391C6F85B7008B628A /* TextureType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureType.swift; sourceTree = "<group>"; };
-		24EFAB3A1C6F85B7008B628A /* MeshBufferContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshBufferContainer.swift; sourceTree = "<group>"; };
 		2A687D9A1C8397A400C399FA /* MetalContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalContext.swift; sourceTree = "<group>"; };
 		2A687DA01C83F71000C399FA /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilBox.framework; path = "../../Library/Developer/Xcode/DerivedData/Zeno-fkuwvmemdqslgddskkxikctcgnjb/Build/Products/Debug-iphoneos/PencilBox.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,20 +99,27 @@
 		24A3AF431C6ED7B000F21382 /* Shiny */ = {
 			isa = PBXGroup;
 			children = (
+				2A687D9A1C8397A400C399FA /* MetalContext.swift */,
+				2A87C40B1C87D5F4007E3FED /* Texture */,
 				2455A48E1C72769D005DEAD7 /* Matrix */,
 				24A3AF441C6ED7B000F21382 /* Shiny.h */,
 				24A3AF461C6ED7B000F21382 /* Info.plist */,
-				2A687D9A1C8397A400C399FA /* MetalContext.swift */,
 				24EFAB351C6F85B7008B628A /* VertexType.swift */,
 				24EFAB361C6F85B7008B628A /* MeshType.swift */,
 				24EFAB371C6F85B7008B628A /* IndexType.swift */,
-				24EFAB381C6F85B7008B628A /* PixelChannelType.swift */,
-				24EFAB391C6F85B7008B628A /* TextureType.swift */,
-				24EFAB3A1C6F85B7008B628A /* MeshBufferContainer.swift */,
-				24C67B011C700E350022A954 /* BasicTexture.swift */,
 				24032A421C70DB890027486A /* TesselatedQuad.swift */,
 			);
 			path = Shiny;
+			sourceTree = "<group>";
+		};
+		2A87C40B1C87D5F4007E3FED /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				24EFAB391C6F85B7008B628A /* TextureType.swift */,
+				24EFAB381C6F85B7008B628A /* PixelChannelType.swift */,
+				24C67B011C700E350022A954 /* BasicTexture.swift */,
+			);
+			name = Texture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +144,7 @@
 				24A3AF3D1C6ED7B000F21382 /* Frameworks */,
 				24A3AF3E1C6ED7B000F21382 /* Headers */,
 				24A3AF3F1C6ED7B000F21382 /* Resources */,
+				2A7894DE1C877ABC00A5B94C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -187,7 +207,6 @@
 				2455A4921C727702005DEAD7 /* Perspective.swift in Sources */,
 				2A687D9B1C8397A400C399FA /* MetalContext.swift in Sources */,
 				2455A4901C7276C4005DEAD7 /* SIMD.swift in Sources */,
-				24EFAB411C6F85B7008B628A /* MeshBufferContainer.swift in Sources */,
 				2455A4961C72770F005DEAD7 /* Rotation.swift in Sources */,
 				24EFAB3E1C6F85B7008B628A /* IndexType.swift in Sources */,
 				24EFAB3F1C6F85B7008B628A /* PixelChannelType.swift in Sources */,
