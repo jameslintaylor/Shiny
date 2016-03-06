@@ -1,0 +1,10 @@
+framework module PencilBox {
+  umbrella header "PencilBox.h"
+
+  export *
+  module * { export * }
+}
+
+module PencilBox.Swift {
+    header "PencilBox-Swift.h"
+}

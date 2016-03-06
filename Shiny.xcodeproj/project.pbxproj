@@ -20,8 +20,7 @@
 		24EFAB3F1C6F85B7008B628A /* PixelChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB381C6F85B7008B628A /* PixelChannelType.swift */; };
 		24EFAB401C6F85B7008B628A /* TextureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAB391C6F85B7008B628A /* TextureType.swift */; };
 		2A687D9B1C8397A400C399FA /* MetalContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A687D9A1C8397A400C399FA /* MetalContext.swift */; };
-		2A687DA11C83F71000C399FA /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A687DA01C83F71000C399FA /* PencilBox.framework */; };
-		2A7894DF1C877AC500A5B94C /* PencilBox.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A687DA01C83F71000C399FA /* PencilBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2A71BC071C8A4BEE003D483E /* PencilBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A71BC061C8A4BEE003D483E /* PencilBox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +30,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2A7894DF1C877AC500A5B94C /* PencilBox.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +51,7 @@
 		24EFAB381C6F85B7008B628A /* PixelChannelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelChannelType.swift; sourceTree = "<group>"; };
 		24EFAB391C6F85B7008B628A /* TextureType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureType.swift; sourceTree = "<group>"; };
 		2A687D9A1C8397A400C399FA /* MetalContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalContext.swift; sourceTree = "<group>"; };
-		2A687DA01C83F71000C399FA /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilBox.framework; path = "../../Library/Developer/Xcode/DerivedData/Zeno-fkuwvmemdqslgddskkxikctcgnjb/Build/Products/Debug-iphoneos/PencilBox.framework"; sourceTree = "<group>"; };
+		2A71BC061C8A4BEE003D483E /* PencilBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PencilBox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A687DA11C83F71000C399FA /* PencilBox.framework in Frameworks */,
+				2A71BC071C8A4BEE003D483E /* PencilBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +80,7 @@
 		24A3AF371C6ED7B000F21382 = {
 			isa = PBXGroup;
 			children = (
-				2A687DA01C83F71000C399FA /* PencilBox.framework */,
+				2A71BC061C8A4BEE003D483E /* PencilBox.framework */,
 				24A3AF431C6ED7B000F21382 /* Shiny */,
 				24A3AF421C6ED7B000F21382 /* Products */,
 			);
@@ -319,8 +317,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Shiny/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -342,8 +340,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Shiny/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
